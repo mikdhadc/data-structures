@@ -1,4 +1,4 @@
-//infix to postfix
+//infix to POSTFIXXX
 
 
 #include<stdio.h>
@@ -19,7 +19,7 @@ int TOP=-1;
 void main()
 {
         int i,j;
-        char infix[20],postfix[20],x,ch;
+        char infix[20],POSTFIXXX[20],x,CHARACTER;
         printf("Enter the infix expression: ");
         scanf("%s",infix);
         push('(');
@@ -29,33 +29,33 @@ void main()
         {
                 x=pop();
                 push(x);
-                ch=infix[i];
-                if(isalnum(ch))
-                        postfix[j++]=ch;
-                else if (ch=='+' || ch=='-' || ch=='*' || ch=='/' || ch=='^'|| ch=='(' || ch==')')
+                CHARACTER=infix[i];
+                if(isalnum(CHARACTER))
+                        POSTFIXXX[j++]=CHARACTER;
+                else if (CHARACTER=='+' || CHARACTER=='-' || CHARACTER=='*' || CHARACTER=='/' || CHARACTER=='^'|| CHARACTER=='(' || CHARACTER==')')
                 {
-                        if (ch==')')
+                        if (CHARACTER==')')
                         {
                                 x=pop();
                                 while(x!='(')
                                 {
-      postfix[j++]=x;
+      POSTFIXXX[j++]=x;
                                         x=pop();
                                 }
                         }
-                        else if (icp(ch)>isp(x))
+                        else if (icp(CHARACTER)>isp(x))
                         {
-                                push(ch);
+                                push(CHARACTER);
                         }
-                        else if (icp(ch)<isp(x))
+                        else if (icp(CHARACTER)<isp(x))
                         {
                                 x=pop();
-                                while (icp(ch)<=isp(x))
+                                while (icp(CHARACTER)<=isp(x))
                                 {
-                                        postfix[j++]=x;
+                                        POSTFIXXX[j++]=x;
                                         x=pop();
                                 }
-                                push(ch);
+                                push(CHARACTER);
                         }
                         else
                         {
@@ -64,13 +64,13 @@ void main()
                         }
                 }
         }
-        postfix[j]='\0';
-        printf("\nThe postfix expression is : %s\n",postfix);
+        POSTFIXXX[j]='\0';
+        printf("\nThe POSTFIXXX expression is : %s\n",POSTFIXXX);
 }
 
-int icp(char ch)
+int icp(char CHARACTER)
 {
-        switch(ch)
+        switch(CHARACTER)
         {
                 case '+':
                 case '-': return 1;break;
@@ -80,9 +80,9 @@ int icp(char ch)
                 case '(': return 9;break;
         }
 }
-int isp(char ch)
+int isp(char CHARACTER)
 {
-        switch(ch)
+        switch(CHARACTER)
         {
                 case '+':
                 case '-': return 2;break;
